@@ -11,4 +11,4 @@ Praticar códigos para incluir em meu portfólio para buscar vagas na área de t
 #Tecnologias utilizadas
 Node
 Express
-SGBD MongoDB
+SGBD MongoDB Atlas
