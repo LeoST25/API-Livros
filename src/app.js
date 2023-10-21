@@ -3,8 +3,8 @@
 import express from "express";
 import conectNaDatabase from "./config/dbConnect.js";
 import routes from "./routes/index.js";
-import mongoose from "mongoose";
 import manipuladorDeErros from "./middlewares/manipuladorDeErros.js";
+import manipulador404 from "./middlewares/manipulador404.js";
 
 const conexao = await conectNaDatabase();
 
@@ -17,15 +17,11 @@ conexao.once("open", () => {
 });
 
 const app = express();
+app.use(express.json());
 routes(app);
 
-app.use(manipuladorDeErros);
+app.use(manipulador404);
 
-app.delete("/livros/:id", (req, res) => {
-  // eslint-disable-next-line no-undef
-  const index = buscaLivro(req.params.id);
-  livros.splice(index, 1);
-  res.status(200).send("Livro removido com sucesso");
-});
+app.use(manipuladorDeErros);
 
 export default app;
