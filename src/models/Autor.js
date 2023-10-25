@@ -14,6 +14,6 @@ const autorSchema = new mongoose.Schema(
   }
 );
 
-const autor = mongoose.model("autores", autorSchema);
+const autores = mongoose.model("autores", autorSchema);
 
-export { autor, autorSchema };
+export default autores;
