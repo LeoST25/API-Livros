@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import NaoEncontrado from "../erros/naoEncontrado.js";
-import livro from "../models/Livro.js";
+import { livro } from "../models/index.js";
 //import { autor } from "../models/Autor.js";
 
 class LivroController {
