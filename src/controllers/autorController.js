@@ -5,8 +5,12 @@ class AutorController {
 
   static async listaAutores (req, res, next) {
     try {
-      const listaAutores = await autores.find({});
-      res.status(200).json(listaAutores);
+      const listaAutores = autores
+        .find({});
+
+      req.resultado = listaAutores;
+
+      next();
     } catch (erro) {
       next(erro);
     }
@@ -15,7 +19,9 @@ class AutorController {
   static async listarAutorPorId (req, res, next) {
     try {
       const id = req.params.id;
-      const listarAutorPorId = await autores.findById(id);
+      const listarAutorPorId = await autores
+        .findById(id);
+
       if (listarAutorPorId !== null) {
         res.status(200).send(listarAutorPorId);
       } else {
@@ -28,7 +34,9 @@ class AutorController {
 
   static async cadastrarAutor (req, res, next) {
     try{
-      const novoAutor = await autores.create(req.body);
+      const novoAutor = await autores
+        .create(req.body);
+
       res.status(201).json({ message: "criado com sucesso", livro: novoAutor });
     } catch (erro) {
       next(erro);
@@ -38,7 +46,8 @@ class AutorController {
   static async atualizarAutor (req, res, next) {
     try {
       const id = req.params.id;
-      const autorResultado = await autores.findByIdAndUpdate(id, {$set: req.body});
+      const autorResultado = await autores
+        .findByIdAndUpdate(id, {$set: req.body});
 
       if (autorResultado !== null) 
       {
@@ -54,7 +63,8 @@ class AutorController {
   static async excluirAutor (req, res, next) {
     try {
       const id = req.params.id;
-      const autorResultado = await autores.findByIdAndDelete(id);
+      const autorResultado = await autores
+        .findByIdAndDelete(id);
 
       if (autorResultado !== null) {
         res.status(200).json({ message: "Autor removido com sucesso." });
