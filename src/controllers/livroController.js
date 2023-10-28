@@ -26,7 +26,7 @@ class LivroController {
       if (livroEncontrado !== null) {
         res.status(200).send(livroEncontrado);
       } else {
-        next(new NaoEncontrado("Id do Autor não localizado."));
+        next(new NaoEncontrado("Id do livro não localizado."));
       }
     } catch (erro) {
       next(erro);
@@ -56,7 +56,7 @@ class LivroController {
       if (livroResultado !== null) {
         res.status(200).json({ message: "Livro atualizado" });
       } else {
-        next(new NaoEncontrado("Id do Autor não localizado."));
+        next(new NaoEncontrado("Id do livro não localizado."));
       }
     } catch (erro) {
       next(erro);
@@ -73,7 +73,7 @@ class LivroController {
       if (livroResultado !== null) {
         res.status(200).json({ message: "Livro excluído com sucesso" });
       } else {
-        next(NaoEncontrado("Id do Autor não localizado."));
+        next(NaoEncontrado("Id do livro não localizado."));
       }
     } catch (erro) {
       next(erro);
